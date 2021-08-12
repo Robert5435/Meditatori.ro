@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Meditatori.ro2.Data
 {
-    public class SiteDbContext : IdentityDbContext
+    public class SiteDbContext : IdentityDbContext<User>
     {
         public SiteDbContext(DbContextOptions<SiteDbContext> options)
             : base(options)
@@ -20,5 +20,10 @@ namespace Meditatori.ro2.Data
         public DbSet<EducationLevel> EducationLevels { get; set; }
         public DbSet<Calification> Califications { get; set; }
         public DbSet<Subject> Subjects { get; set; }
+
+        public DbSet<User> Users { get; set; }
+
+
+
     }
 }
