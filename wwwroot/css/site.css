@@ -24,10 +24,30 @@ a {
   border-color: #1861ac;
 }
 
+
+.carousel-item{
+    height: 32rem;
+    background:#777;
+    color:white;
+    position:relative;
+}
+
+
+.row {
+
+    padding:15px;
+}
+
+
+.container{
+    width:1900px;
+}
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 @media (min-width: 768px) {
   html {
