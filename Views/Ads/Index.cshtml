@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Meditatori.Models.Ad>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjectId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EducationLevelId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailabilityOnline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailabilityHome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailabilityStudentHome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PricePerSession)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SessionLenghtinMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpirationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Calification)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EducationLevel.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailabilityOnline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailabilityHome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailabilityStudentHome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PricePerSession)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SessionLenghtinMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpirationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calification.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location.name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
