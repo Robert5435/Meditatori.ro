@@ -13,6 +13,8 @@ namespace Meditatori.Models
 
         public ICollection<Ad> Ads { get; set; }
 
+        public ICollection<User> Users { get; set;}
+
         
     }
 }
