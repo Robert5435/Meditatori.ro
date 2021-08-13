@@ -1,8 +1,66 @@
-﻿@{
+﻿@model IEnumerable<Meditatori.Models.Subject>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+
+    </ol>
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://images.unsplash.com/photo-1524591431555-cc7876d14adf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1" />
+            <div class="container-fluid">
+                <div class="carousel-caption">
+                    <h1 class="display-4">Are you a student and in need for tutors?</h1>
+                    <h1 class="display-3">Search for your perfect tutor</h1>
+                    <h1 class="display-1">Make studying awesome</h1>
+                    <a href="/Identity/Account/Register" class="btn btn-lg btn-primary">Signup</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1516414447565-b14be0adf13e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&w=1900&q=500" />
+            <div class="container-fluid">
+                <div class="carousel-caption">
+                    <h1 class="display-4">Are you a tutor and in need for students?</h1>
+                    <h1 class="display-3">Signup now and students will look for you</h1>
+                    <a href="/Identity/Account/Register" class="btn btn-lg btn-primary">Signup</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
+
+
+<div class="container marketing">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4">
+                <a href="@item.name">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777"></rect>
+                        <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+                    </svg>
+                </a>
+                <h2>@Html.DisplayFor(modelItem => item.name)</h2>
+            </div>
+
+        }
+    </div>
+</div>
+
+
+
+
+
+
+
