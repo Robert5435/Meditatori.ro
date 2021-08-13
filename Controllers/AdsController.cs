@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Meditatori.Models;
 using Meditatori.ro2.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Meditatori.ro2.Controllers
 {
@@ -27,6 +28,7 @@ namespace Meditatori.ro2.Controllers
         }
 
         // GET: Ads/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,6 +49,7 @@ namespace Meditatori.ro2.Controllers
         }
 
         // GET: Ads/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["CalificationId"] = new SelectList(_context.Set<Calification>(), "Id", "Id");
@@ -59,6 +62,7 @@ namespace Meditatori.ro2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,UserId,LocationId,SubjectId,EducationLevelId,CalificationId,Title,Content,Active,AvailabilityOnline,AvailabilityHome,AvailabilityStudentHome,PricePerSession,SessionLenghtinMinutes,ExpirationDate")] Ad ad)
         {
             if (ModelState.IsValid)
@@ -73,6 +77,7 @@ namespace Meditatori.ro2.Controllers
         }
 
         // GET: Ads/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -95,6 +100,7 @@ namespace Meditatori.ro2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,UserId,LocationId,SubjectId,EducationLevelId,CalificationId,Title,Content,Active,AvailabilityOnline,AvailabilityHome,AvailabilityStudentHome,PricePerSession,SessionLenghtinMinutes,ExpirationDate")] Ad ad)
         {
             if (id != ad.Id)
@@ -128,6 +134,7 @@ namespace Meditatori.ro2.Controllers
         }
 
         // GET: Ads/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -150,6 +157,7 @@ namespace Meditatori.ro2.Controllers
         // POST: Ads/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var ad = await _context.Ads.FindAsync(id);
