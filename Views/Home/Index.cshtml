@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<Meditatori.Models.Subject>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Meditatori.Models.User> SignInManager
+@inject UserManager<Meditatori.Models.User> UserManager
 
 @{
     ViewData["Title"] = "Home Page";
@@ -19,8 +22,12 @@
                     <h1 class="display-4">Are you a student and in need for tutors?</h1>
                     <h1 class="display-3">Search for your perfect tutor</h1>
                     <h1 class="display-1">Make studying awesome</h1>
-                    <a href="/Identity/Account/Register" class="btn btn-lg btn-primary">Signup</a>
-                </div>
+                    @if (!SignInManager.IsSignedIn(User))
+                    {<a href="/Identity/Account/Register" class="btn btn-lg btn-primary">Signup</a>}
+                        
+
+
+                    </div>
             </div>
         </div>
 
@@ -30,7 +37,10 @@
                 <div class="carousel-caption">
                     <h1 class="display-4">Are you a tutor and in need for students?</h1>
                     <h1 class="display-3">Signup now and students will look for you</h1>
-                    <a href="/Identity/Account/Register" class="btn btn-lg btn-primary">Signup</a>
+
+                    @if (!SignInManager.IsSignedIn(User))
+                    {<a href="/Identity/Account/Register" class="btn btn-lg btn-primary">Signup</a>}
+
                 </div>
             </div>
         </div>
