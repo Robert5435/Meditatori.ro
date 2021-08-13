@@ -21,7 +21,7 @@ namespace Meditatori.ro2.Data
         public DbSet<Calification> Califications { get; set; }
         public DbSet<Subject> Subjects { get; set; }
 
-        public DbSet<User> Users { get; set; }
+       public DbSet<User> Users { get; set; }
 
 
 
