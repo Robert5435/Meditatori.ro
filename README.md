@@ -11,8 +11,13 @@ You need an active MicrosoftSQL server you can download it from here : https://w
 ---
 Modify in appsettings.json : "DefaultConnection":server=servername;database=databasename;Trusted_connection=true
 ---
-Use packet manager : add-migration InitialCreate
-					 update-database
+Use packet manager to initalize and update database: add-migration InitialCreate/ update-database
+
+```bash
+add-migration
+update-database
+```
+
 
 
 # Contributing
