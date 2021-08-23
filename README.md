@@ -6,8 +6,11 @@ BeMyTeacher is an web application where students and tutors can search for or ad
 NuGet packages: Microsoft.EntityFrameworkCore Version 5.0.8
 				Microsoft.EntityFrameworkCore.SQLServer Version 5.0.8
 				Microsoft.EntityFrameworkCore.Tools Version 5.0.8
+---
 You need an active MicrosoftSQL server you can download it from here : https://www.microsoft.com/en-us/sql-server/sql-server-downloads
+---
 Modify in appsettings.json : "DefaultConnection":server=servername;database=databasename;Trusted_connection=true
+---
 Use packet manager : add-migration InitialCreate
 					 update-database
 
