@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+﻿using BeMyTeacher.Util;
 using Meditatori.Models;
 using Meditatori.ro2.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Meditatori.ro2.Controllers
 {
@@ -21,10 +20,13 @@ namespace Meditatori.ro2.Controllers
         }
 
         // GET: Ads
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? pageNumber)
         {
             var siteDbContext = _context.Ads.Include(a => a.Calification).Include(a => a.Location).Include(a => a.Subject).Include(a => a.EducationLevel);
-            return View(await siteDbContext.ToListAsync());
+            //return View(await siteDbContext.ToListAsync());
+            int pageSize = 3;
+            var viewDataAd = await PaginatedList<Ad>.CreateAsync(siteDbContext.AsNoTracking(), pageNumber ?? 1, pageSize);
+            return View(viewDataAd);
         }
 
         // GET: Ads/Details/5
