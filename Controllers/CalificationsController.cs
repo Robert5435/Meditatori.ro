@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Meditatori.Models;
+using Meditatori.ro2.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Meditatori.Models;
-using Meditatori.ro2.Data;
 
 namespace Meditatori.ro2.Controllers
 {

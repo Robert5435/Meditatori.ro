@@ -1,9 +1,6 @@
 ﻿using Meditatori.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Meditatori.ro2.Data
 {
@@ -21,7 +18,7 @@ namespace Meditatori.ro2.Data
         public DbSet<Calification> Califications { get; set; }
         public DbSet<Subject> Subjects { get; set; }
 
-       public DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
 
 
 
