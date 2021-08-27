@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,12 +21,25 @@ namespace Meditatori.ro2.Controllers
         }
 
         // GET: Ads
-        public async Task<IActionResult> Index(int? pageNumber)
+        public async Task<IActionResult> Index(int? pageNumber, string searchStringSubject)
         {
+            ViewData["CurrentFilter"] = searchStringSubject;
+
+            if (searchStringSubject != null)
+            {
+                pageNumber = 1;
+            }
+
             var siteDbContext = _context.Ads.Include(a => a.Calification).Include(a => a.Location).Include(a => a.Subject).Include(a => a.EducationLevel);
-            //return View(await siteDbContext.ToListAsync());
+            var ads = from a in siteDbContext
+                      select a;
+
+            if (!String.IsNullOrEmpty(searchStringSubject))
+            {
+                ads = ads.Where(a => a.Subject.name.Contains(searchStringSubject));
+            }
             int pageSize = 3;
-            var viewDataAd = await PaginatedList<Ad>.CreateAsync(siteDbContext.AsNoTracking(), pageNumber ?? 1, pageSize);
+            var viewDataAd = await PaginatedList<Ad>.CreateAsync(ads.AsNoTracking(), pageNumber ?? 1, pageSize);
             return View(viewDataAd);
         }
 
@@ -41,6 +55,8 @@ namespace Meditatori.ro2.Controllers
             var ad = await _context.Ads
                 .Include(a => a.Calification)
                 .Include(a => a.Location)
+                .Include(a => a.Subject)
+                .Include(a => a.EducationLevel)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (ad == null)
             {
@@ -167,6 +183,7 @@ namespace Meditatori.ro2.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool AdExists(int id)
         {

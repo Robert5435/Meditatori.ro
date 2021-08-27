@@ -5,9 +5,19 @@
 }
 
 <div class="container">
+    <form asp-action="Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Find by subject: <input type="text" name="SearchStringSubject" />
+                <input type="submit" value="Search" class="btn btn-default" /> |
+                <a asp-action="Index">Back to Full List</a>
+            </p>
+        </div>
+    </form>
+
+
     @foreach (var item in Model)
     {
-
         <div class="card mb-3" style="max-width: 1040px; max-height: 400px;">
             <div class="row g-0">
                 <div class="col-md-4">
@@ -15,44 +25,37 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                        <a asp-action="Details" asp-route-id="@item.Id"><h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5></a>
+                        @if (item.Content.Count() > 300)
+                        {
+                            item.Content = item.Content.Substring(0, 300) + "...";
+                        }
                         <p class="card-text">@Html.DisplayFor(modelItem => item.Content)</p>
                         <p class="h4">@Html.DisplayFor(modelItem => item.Subject.name)</p>
                         <p class="h4">@Html.DisplayFor(modelItem => item.PricePerSession) Lei</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-
-                        <table>
-                            <tr>
-                                <td>
-                                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-
-                                </td>
-                            </tr>
-                        </table>
 
                     </div>
                 </div>
             </div>
         </div>
     }
-        @{
-            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-        }
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
 
-        <a asp-action="Index"
-           asp-route-pageNumber="@(Model.PageIndex - 1)"
-           class="btn btn-default @prevDisabled">
-            Previous
-        </a>
-        <a asp-action="Index"
-           asp-route-pageNumber="@(Model.PageIndex + 1)"
-           class="btn btn-default @nextDisabled">
-            Next
-        </a>
-    </div>
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+</div>
 
 
 

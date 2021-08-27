@@ -8,6 +8,8 @@ namespace Meditatori.Models
 
         public string name { get; set; }
 
+        public string PhotoPath { get; set; }
+
         public ICollection<Ad> Ads { get; set; }
     }
 }
