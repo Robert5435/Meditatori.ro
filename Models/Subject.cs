@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Meditatori.Models
 {
@@ -10,6 +7,8 @@ namespace Meditatori.Models
         public int Id { get; set; }
 
         public string name { get; set; }
+
+        public string PhotoPath { get; set; }
 
         public ICollection<Ad> Ads { get; set; }
     }

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Meditatori.Models;
+using Meditatori.ro2.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Meditatori.Models;
-using Meditatori.ro2.Data;
 
 namespace Meditatori.ro2.Controllers
 {
@@ -54,7 +51,7 @@ namespace Meditatori.ro2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,name")] Subject subject)
+        public async Task<IActionResult> Create([Bind("Id,name,PhotoPath")] Subject subject)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +83,7 @@ namespace Meditatori.ro2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,name")] Subject subject)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,name,PhotoPath")] Subject subject)
         {
             if (id != subject.Id)
             {

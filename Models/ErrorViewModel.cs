@@ -1,5 +1,3 @@
-using System;
-
 namespace Meditatori.ro2.Models
 {
     public class ErrorViewModel
