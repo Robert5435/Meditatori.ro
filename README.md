@@ -82,7 +82,7 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-Any computer belonging to millennia III will work.
+Any computer belonging to millennia II will work.
 
 ### Installation
 
@@ -93,11 +93,11 @@ Any computer belonging to millennia III will work.
     For a guide how to clone a Git Repo press [here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository).
 
 
-2. [Install .Net core]().
+2. [Install .Net core](https://dotnet.microsoft.com/download).
 <br/>
    
 
-3. [Install Entity Framework]().
+3. [Install Entity Framework](https://docs.microsoft.com/en-us/ef/).
 
 
 4. Install an IDE to be able to run the project. As a suggestion, check out Visual Studio Community Edition.
