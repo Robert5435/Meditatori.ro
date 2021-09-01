@@ -13,15 +13,12 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/stefan-sorea-979a1b182/)
 
 
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-
-[comment]: <> (  <a href="https://github.com/sunStephan/DungeonCrawler">)
 
 [comment]: <> (    <img src="images/logo.png" alt="Logo" width="80" height="80">)
 
@@ -91,7 +88,7 @@ Any computer belonging to millennia III will work.
 
 1. Clone the repo.
    ```sh
-   git clone https://github.com/sunStephan/BeMyTeacher.git
+   git clone https://github.com/Robert5435/Meditatori.ro
    ```
     For a guide how to clone a Git Repo press [here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository).
 
@@ -133,7 +130,7 @@ See `LICENSE` for more information.
 
 Nita Robert - [robert.nitza5@gmail.com](robert.nitza5@gmail.com)
 
-Project Link: [https://github.com/sunStephan/BeMyTeacher](https://github.com/sunStephan/BeMyTeacher)
+Project Link: [https://github.com/Robert5435/Meditatori.ro](https://github.com/Robert5435/Meditatori.ro)
 
 
 
