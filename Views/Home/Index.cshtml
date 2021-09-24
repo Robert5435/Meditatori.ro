@@ -24,10 +24,10 @@
                     <h1 class="display-1">Make studying awesome</h1>
                     @if (!SignInManager.IsSignedIn(User))
                     {<a href="/Identity/Account/Register" class="btn btn-lg btn-primary">Signup</a>}
-                        
 
 
-                    </div>
+
+                </div>
             </div>
         </div>
 
@@ -47,22 +47,25 @@
 
     </div>
 </div>
-
-
-<div class="container marketing">
-    <div class="row">
+<div class="container-cards">
+    <div class="container-fa">
         @foreach (var item in Model)
         {
-            <div class="col-lg-4">
-                <a href="Ads?SearchStringSubject=@item.name">
-                    <img src="@item.PhotoPath"/>
-                </a>
-                <h2>@Html.DisplayFor(modelItem => item.name)</h2>
+            <div class="card-fa">
+                <div class="box-fa">
+                    <div class="content-fa">
+                        <i class="fab fa-python"></i>
+                        <h3 class="h3-fa">@Html.DisplayFor(modelItem => item.Name)</h3>
+                        <p><img src="@item.PhotoPath" /></p>
+                        <a class="a-fa" href="Ads?SearchStringSubject=@item.Name">Search</a>
+                    </div>
+                </div>
             </div>
 
         }
     </div>
 </div>
+
 
 
 

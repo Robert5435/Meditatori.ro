@@ -19,6 +19,44 @@ namespace BeMyTeacher.Migrations
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("BeMyTeacher.ViewModels.AdViewModel", b =>
+                {
+                    b.Property<bool>("AvailabilityHome")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AvailabilityOnline")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AvailabilityStudentHome")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("CalificationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EducationLevelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LocationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PricePerSession")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SessionLenghtinMinutes")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("AdViewModels");
+                });
+
             modelBuilder.Entity("Meditatori.Models.Ad", b =>
                 {
                     b.Property<int>("Id")
@@ -153,6 +191,9 @@ namespace BeMyTeacher.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("PhotoPath")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");

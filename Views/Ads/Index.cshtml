@@ -1,8 +1,12 @@
-﻿@model BeMyTeacher.Util.PaginatedList<Meditatori.Models.Ad>
+﻿@model BeMyTeacher.ViewModels.SearchAdViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
+
+
+
+
 
 <div class="container">
     <form asp-action="Index" method="get">
@@ -15,8 +19,23 @@
         </div>
     </form>
 
+    <form asp-action="Index" >
+        <div class="form-group">
+            @Html.LabelFor(x => Model.Subjects, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <p>
+                    @Html.DropDownListFor(x => Model.Subjects, new SelectList(Model.Subjects, "Id", "Name"), "--Select Subject--")
+                    @Html.ValidationMessageFor(x => x.Subjects, "", new { @class = "text-danger" })
+                    <input type="submit" value="Search" class="btn btn-primary" name="Subject" />
+                </p>
+            </div>
+          
+        </div>
+        
+    </form>
 
-    @foreach (var item in Model)
+
+    @foreach (var item in Model.Ads)
     {
         <div class="card mb-3" style="max-width: 1040px; max-height: 400px;">
             <div class="row g-0">
@@ -31,7 +50,7 @@
                             item.Content = item.Content.Substring(0, 300) + "...";
                         }
                         <p class="card-text">@Html.DisplayFor(modelItem => item.Content)</p>
-                        <p class="h4">@Html.DisplayFor(modelItem => item.Subject.name)</p>
+                        <p class="h4">@Html.DisplayFor(modelItem => item.Subject)</p>
                         <p class="h4">@Html.DisplayFor(modelItem => item.PricePerSession) Lei</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 
@@ -40,18 +59,19 @@
             </div>
         </div>
     }
+
     @{
-        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        var prevDisabled = !Model.Ads.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.Ads.HasNextPage ? "disabled" : "";
     }
 
     <a asp-action="Index"
-       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-pageNumber="@(Model.Ads.PageIndex - 1)"
        class="btn btn-default @prevDisabled">
         Previous
     </a>
     <a asp-action="Index"
-       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-pageNumber="@(Model.Ads.PageIndex + 1)"
        class="btn btn-default @nextDisabled">
         Next
     </a>

@@ -1,3 +1,5 @@
+using AutoMapper;
+using BeMyTeacher.Mappings;
 using Meditatori.Models;
 using Meditatori.ro2.Data;
 using Microsoft.AspNetCore.Builder;
@@ -29,6 +31,14 @@ namespace Meditatori.ro2
             services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<SiteDbContext>();
             services.AddControllersWithViews();
+
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
