@@ -5,11 +5,8 @@
 }
 
 
-
-
-
 <div class="container">
-    <form asp-action="Index" method="get">
+    @*<form asp-action="Index" method="get">
         <div class="form-actions no-color">
             <p>
                 Find by subject: <input type="text" name="SearchStringSubject" />
@@ -17,16 +14,16 @@
                 <a asp-action="Index">Back to Full List</a>
             </p>
         </div>
-    </form>
+    </form>*@
 
-    <form asp-action="Index" >
+    <form asp-action="Index" method="get">
         <div class="form-group">
             @Html.LabelFor(x => Model.Subjects, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
                 <p>
-                    @Html.DropDownListFor(x => Model.Subjects, new SelectList(Model.Subjects, "Id", "Name"), "--Select Subject--")
+                    @Html.DropDownListFor(x => Model.SelectedSubjectId, new SelectList(Model.Subjects, "Id", "Name"), "--Select Subject--")
                     @Html.ValidationMessageFor(x => x.Subjects, "", new { @class = "text-danger" })
-                    <input type="submit" value="Search" class="btn btn-primary" name="Subject" />
+                    <input type="submit" value="Search" class="btn btn-primary" />
                 </p>
             </div>
           
@@ -67,11 +64,14 @@
 
     <a asp-action="Index"
        asp-route-pageNumber="@(Model.Ads.PageIndex - 1)"
+       asp-route-selectedSubjectId="@(Model.SelectedSubjectId)"
        class="btn btn-default @prevDisabled">
         Previous
     </a>
     <a asp-action="Index"
        asp-route-pageNumber="@(Model.Ads.PageIndex + 1)"
+       asp-route-selectedSubjectId="@(Model.SelectedSubjectId)"
+ 
        class="btn btn-default @nextDisabled">
         Next
     </a>

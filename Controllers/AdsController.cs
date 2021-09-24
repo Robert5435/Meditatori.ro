@@ -26,13 +26,13 @@ namespace Meditatori.ro2.Controllers
         }
 
         //GET: Ads
-        public async Task<IActionResult> Index(int? pageNumber, string searchStringSubject)
+        public async Task<IActionResult> Index(int? pageNumber, int? selectedSubjectId)
         {
             int pageSize = 5;
 
-            ViewData["CurrentFilter"] = searchStringSubject;
+            ViewData["CurrentFilter"] = selectedSubjectId;
 
-            if (searchStringSubject != null)
+            if (selectedSubjectId != null)
             {
                 pageNumber = 1;
             }
@@ -40,12 +40,9 @@ namespace Meditatori.ro2.Controllers
             var ads = _context.Ads.Include(a => a.Calification).Include(a => a.Location).Include(a => a.Subject).Include(a => a.EducationLevel).ToList();
             var importedSubjects = _context.Subjects;
 
-            //var ads = _context.Ads.ToList();
-
-
-            if (!String.IsNullOrEmpty(searchStringSubject))
+            if (selectedSubjectId.HasValue)
             {
-                ads = ads.Where(a => a.Subject.Name.Contains(searchStringSubject)).ToList();
+                ads = ads.Where(a => a.SubjectId == selectedSubjectId).ToList();
             }
 
             List<SubjectViewModel> modelSubjects = new List<SubjectViewModel>();
@@ -54,7 +51,6 @@ namespace Meditatori.ro2.Controllers
                 var subjectVM = _mapper.Map<SubjectViewModel>(subject);
                 modelSubjects.Add(subjectVM);
             }
-
 
             List<AdViewModel> modelAds = new List<AdViewModel>();
             foreach (var ad in ads)
@@ -67,18 +63,19 @@ namespace Meditatori.ro2.Controllers
             var searchVM = new SearchAdViewModel()
             {
                 Subjects = modelSubjects,
-                Ads = viewDataAd
+                Ads = viewDataAd,
+                SelectedSubjectId = selectedSubjectId
             };
             return View(searchVM);
         }
 
         // Post:Index
         [HttpPost]
-        public async Task<IActionResult> Index([Bind("Id,Name")]SubjectViewModel subject)
+        public async Task<IActionResult> Index(SearchAdViewModel searchModel)
         {
             if (ModelState.IsValid)
             {
-                var subjects = subject.Name;
+                var subjects = searchModel;
             }
             return RedirectToAction(nameof(Index));
         }

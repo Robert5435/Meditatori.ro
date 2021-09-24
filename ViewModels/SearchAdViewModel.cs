@@ -11,5 +11,7 @@ namespace BeMyTeacher.ViewModels
     {
         public List<SubjectViewModel> Subjects { get; set; }
         public PaginatedList<AdViewModel> Ads { get; set; }
+
+        public int? SelectedSubjectId { get; set; }
     }
 }

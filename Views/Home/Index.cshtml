@@ -57,7 +57,10 @@
                         <i class="fab fa-python"></i>
                         <h3 class="h3-fa">@Html.DisplayFor(modelItem => item.Name)</h3>
                         <p><img src="@item.PhotoPath" /></p>
-                        <a class="a-fa" href="Ads?SearchStringSubject=@item.Name">Search</a>
+                        <a class="a-fa"
+                           asp-controller="Ads"
+                           asp-action="Index"
+                           asp-route-selectedSubjectId="@item.Id">Search</a>
                     </div>
                 </div>
             </div>
